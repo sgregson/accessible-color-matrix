@@ -10207,11 +10207,50 @@
 							background.name,
 							A2(
 								_elm_lang$core$Basics_ops['++'],
-								' background; it is not 508-compliant, with a contrast ratio of ',
+								' background; it is not WCAG2-compliant, with a contrast ratio of ',
 								A2(
 									_elm_lang$core$Basics_ops['++'],
 									_toolness$accessible_color_matrix$ContrastRatio$humanFriendlyContrastRatio(ratio),
 									'.'))))));
+		});
+	var _toolness$accessible_color_matrix$Matrix$a11yRatio = 4.5;
+	var _toolness$accessible_color_matrix$Matrix$badContrastLegendText = A2(
+		_elm_lang$core$Basics_ops['++'],
+		'Please don\'t use these color combinations; they do not meet a color contrast ratio of ',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Basics$toString(_toolness$accessible_color_matrix$Matrix$a11yRatio),
+			':1, so they do not conform with the standards of\n  WCAG 2 for body text. This means that some people would have\n  difficulty reading the text. Employing accessibility best practices\n  improves the user experience for all users.'));
+	var _toolness$accessible_color_matrix$Matrix$legend = A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('usa-matrix-legend'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _toolness$accessible_color_matrix$Symbols$badContrastSvg(''),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$p,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('usa-sr-invisible'),
+						_1: {
+							ctor: '::',
+							_0: _toolness$accessible_color_matrix$Accessibility$ariaHidden(true),
+							_1: {ctor: '[]'}
+						}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(_toolness$accessible_color_matrix$Matrix$badContrastLegendText),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
 		});
 	var _toolness$accessible_color_matrix$Matrix$matrixTableRow = function (palette) {
 		var rowComboCell = F2(
@@ -10328,7 +10367,7 @@
 														},
 														{
 															ctor: '::',
-															_0: _elm_lang$html$Html$text(' is 508-compliant, with a contrast ratio of '),
+															_0: _elm_lang$html$Html$text(' is WCAG2-compliant, with a contrast ratio of '),
 															_1: {
 																ctor: '::',
 																_0: _elm_lang$html$Html$text(
@@ -10394,7 +10433,7 @@
 							}
 						});
 				}();
-				return (_elm_lang$core$Native_Utils.cmp(ratio, 4.5) > -1) ? validCell : invalidCell;
+				return (_elm_lang$core$Native_Utils.cmp(ratio, _toolness$accessible_color_matrix$Matrix$a11yRatio) > -1) ? validCell : invalidCell;
 			});
 		var rowHeaderCell = function (entry) {
 			return A2(
@@ -10511,38 +10550,6 @@
 				}
 			});
 	};
-	var _toolness$accessible_color_matrix$Matrix$badContrastLegendText = '\n  Please don\'t use these color combinations; they do not meet a color\n  contrast ratio of 4.5:1, so they do not conform with the standards of\n  Section 508 for body text. This means that some people would have\n  difficulty reading the text. Employing accessibility best practices\n  improves the user experience for all users.\n';
-	var _toolness$accessible_color_matrix$Matrix$legend = A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('usa-matrix-legend'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _toolness$accessible_color_matrix$Symbols$badContrastSvg(''),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$p,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('usa-sr-invisible'),
-						_1: {
-							ctor: '::',
-							_0: _toolness$accessible_color_matrix$Accessibility$ariaHidden(true),
-							_1: {ctor: '[]'}
-						}
-					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(_toolness$accessible_color_matrix$Matrix$badContrastLegendText),
-						_1: {ctor: '[]'}
-					}),
-				_1: {ctor: '[]'}
-			}
-		});
 	var _toolness$accessible_color_matrix$Matrix$matrixDiv = function (palette) {
 		return A2(
 			_elm_lang$html$Html$div,
