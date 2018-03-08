@@ -13,19 +13,21 @@ import Palette exposing (
   Palette, PaletteEntry, paletteEntryHex, squareBgStyle
   )
 
+a11yRatio : Float
+a11yRatio = 4.5
+
 badContrastLegendText : String
-badContrastLegendText = """
-  Please don't use these color combinations; they do not meet a color
-  contrast ratio of 4.5:1, so they do not conform with the standards of
-  Section 508 for body text. This means that some people would have
+badContrastLegendText =
+  "Please don't use these color combinations; they do not meet a color contrast ratio of " ++
+    toString (a11yRatio) ++ """:1, so they do not conform with the standards of
+  WCAG 2 for body text. This means that some people would have
   difficulty reading the text. Employing accessibility best practices
-  improves the user experience for all users.
-"""
+  improves the user experience for all users."""
 
 badContrastText : PaletteEntry -> PaletteEntry -> Float -> String
 badContrastText background foreground ratio =
   "Do not use " ++ foreground.name ++ " text on " ++ background.name ++
-    " background; it is not 508-compliant, with a contrast ratio of " ++
+    " background; it is not WCAG2-compliant, with a contrast ratio of " ++
       (humanFriendlyContrastRatio ratio) ++ "."
 
 goodContrastText : PaletteEntry -> PaletteEntry -> Float -> String
@@ -120,7 +122,7 @@ matrixTableRow palette =
               , strong [] [ text (capFirst background.name) ]
               , text " background"
               , span [ class "usa-sr-only" ]
-                [ text " is 508-compliant, with a contrast ratio of "
+                [ text " is WCAG2-compliant, with a contrast ratio of "
                 , text (humanFriendlyContrastRatio ratio)
                 , text "."
                 ]
@@ -138,7 +140,7 @@ matrixTableRow palette =
               , div [ class "usa-sr-only" ] [ text desc ]
               ]
       in
-        if ratio >= 4.5 then validCell else invalidCell
+        if ratio >= a11yRatio then validCell else invalidCell
 
     row : Palette -> PaletteEntry -> Html msg
     row palette background =
