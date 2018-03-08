@@ -10570,25 +10570,25 @@
 			_0: {ctor: '_Tuple2', _0: 'secondary', _1: '774977'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'primary', _1: '3A7585'},
+				_0: {ctor: '_Tuple2', _0: 'sale', _1: 'C2322C'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'sale', _1: 'C2312C'},
+					_0: {ctor: '_Tuple2', _0: 'primary', _1: '3A7585'},
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'error', _1: 'ED021E'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'tertiary', _1: 'F9BB53'},
+							_0: {ctor: '_Tuple2', _0: 'black1', _1: '7f7f7f'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'black1', _1: '7f7f7f'},
+								_0: {ctor: '_Tuple2', _0: 'primary1', _1: '9CBAC2'},
 								_1: {
 									ctor: '::',
 									_0: {ctor: '_Tuple2', _0: 'black2', _1: 'bfbfbf'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'primary1', _1: '9CBAC2'},
+										_0: {ctor: '_Tuple2', _0: 'tertiary', _1: 'F9BB53'},
 										_1: {
 											ctor: '::',
 											_0: {ctor: '_Tuple2', _0: 'primary2', _1: 'CEDCE0'},
