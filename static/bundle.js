@@ -10564,23 +10564,59 @@
 
 	var _toolness$accessible_color_matrix$Main$defaultPalette = {
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'white', _1: 'ffffff'},
+		_0: {ctor: '_Tuple2', _0: 'black', _1: '000000'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'light', _1: 'b3efff'},
+			_0: {ctor: '_Tuple2', _0: 'secondary', _1: '774977'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'bright', _1: '00cfff'},
+				_0: {ctor: '_Tuple2', _0: 'primary', _1: '3A7585'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'medium', _1: '046b99'},
+					_0: {ctor: '_Tuple2', _0: 'error', _1: 'ED021E'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'dark', _1: '1c304a'},
+						_0: {ctor: '_Tuple2', _0: 'sale', _1: 'C2312C'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'black', _1: '000000'},
-							_1: {ctor: '[]'}
+							_0: {ctor: '_Tuple2', _0: 'tertiary', _1: 'F9BB53'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'black1', _1: '7f7f7f'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'black2', _1: 'bfbfbf'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'primary1', _1: '9CBAC2'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'primary2', _1: 'CEDCE0'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'black~3', _1: 'ebebeb'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'primary3', _1: 'F0F4F6'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'bg1', _1: 'FAF9F6'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'bg', _1: 'F6F4EE'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'white', _1: 'ffffff'},
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 				}

@@ -33,12 +33,22 @@ port updateFavicon : List String -> Cmd msg
 
 defaultPalette : SerializedPalette
 defaultPalette =
-  [ ("white", "ffffff")
-  , ("light", "b3efff")
-  , ("bright", "00cfff")
-  , ("medium", "046b99")
-  , ("dark", "1c304a")
-  , ("black", "000000")
+  [
+    ("black", "000000")
+  , ("secondary", "774977")
+  , ("primary", "3A7585")
+  , ("error", "ED021E")
+  , ("sale", "C2312C")
+  , ("tertiary", "F9BB53")
+  , ("black1", "7f7f7f")
+  , ("black2", "bfbfbf")
+  , ("primary1", "9CBAC2")
+  , ("primary2", "CEDCE0")
+  , ("black~3", "ebebeb")
+  , ("primary3", "F0F4F6")
+  , ("bg1", "FAF9F6")
+  , ("bg", "F6F4EE")
+  , ("white", "ffffff")
   ]
 
 actions : Model -> Html Message
