@@ -10573,10 +10573,10 @@
 				_0: {ctor: '_Tuple2', _0: 'primary', _1: '3A7585'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'error', _1: 'ED021E'},
+					_0: {ctor: '_Tuple2', _0: 'sale', _1: 'C2312C'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'sale', _1: 'C2312C'},
+						_0: {ctor: '_Tuple2', _0: 'error', _1: 'ED021E'},
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'tertiary', _1: 'F9BB53'},
