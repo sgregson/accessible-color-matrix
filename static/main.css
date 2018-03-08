@@ -1890,9 +1890,9 @@ h2.styleguide-header {
 
 .usa-primary-color-section {
   margin-bottom: 0; }
-  @media screen and (min-width: 600px) {
+  /* @media screen and (min-width: 600px) {
     .usa-primary-color-section {
-      margin-bottom: 8rem; } }
+      margin-bottom: 8rem; } }*/
   .usa-primary-color-section .usa-color-square {
     float: left;
     display: block;
@@ -1909,7 +1909,7 @@ h2.styleguide-header {
         display: block;
         margin-right: 2.35765%;
         width: 14.70196%;
-        margin-bottom: 0;
+        margin-bottom: 7rem;
         padding-bottom: 14.70196%; }
         .usa-primary-color-section .usa-color-square:last-child {
           margin-right: 0; } }
