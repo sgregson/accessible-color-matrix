@@ -10213,7 +10213,7 @@
 									_toolness$accessible_color_matrix$ContrastRatio$humanFriendlyContrastRatio(ratio),
 									'.'))))));
 		});
-	var _toolness$accessible_color_matrix$Matrix$a11yRatio = 3;
+	var _toolness$accessible_color_matrix$Matrix$a11yRatio = 4.5;
 	var _toolness$accessible_color_matrix$Matrix$badContrastLegendText = A2(
 		_elm_lang$core$Basics_ops['++'],
 		'Please don\'t use these color combinations; they do not meet a color contrast ratio of ',
@@ -10847,35 +10847,52 @@
 					{ctor: '[]'},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('Accessible color palette builder'),
+						_0: _elm_lang$html$Html$text('Accessible color combinations'),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
 					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$map,
-						function (m) {
-							return _toolness$accessible_color_matrix$Main$PaletteMessage(m);
-						},
-						A2(_toolness$accessible_color_matrix$Palette$paletteUl, model.palette, model.isEditing)),
+					_0: _toolness$accessible_color_matrix$Main$actions(model),
 					_1: {
 						ctor: '::',
-						_0: _toolness$accessible_color_matrix$Main$actions(model),
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: model.isEditing ? A2(
+									_elm_lang$html$Html$div,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$h2,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('Accessible color palette builder'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$map,
+												function (m) {
+													return _toolness$accessible_color_matrix$Main$PaletteMessage(m);
+												},
+												A2(_toolness$accessible_color_matrix$Palette$paletteUl, model.palette, model.isEditing)),
+											_1: {ctor: '[]'}
+										}
+									}) : A2(
+									_elm_lang$html$Html$span,
+									{ctor: '[]'},
+									{ctor: '[]'}),
+								_1: {ctor: '[]'}
+							}),
 						_1: {
 							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$h2,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('Accessible color combinations'),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: _toolness$accessible_color_matrix$Matrix$matrixDiv(model.palette),
-								_1: {ctor: '[]'}
-							}
+							_0: _toolness$accessible_color_matrix$Matrix$matrixDiv(model.palette),
+							_1: {ctor: '[]'}
 						}
 					}
 				}
