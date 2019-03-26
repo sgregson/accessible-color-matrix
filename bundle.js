@@ -44,13 +44,13 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var Elm = __webpack_require__(1);
 	var qs = __webpack_require__(2);
 	var jscolorify = __webpack_require__(6);
 	var setFavicon = __webpack_require__(7);
-	var main = document.getElementById('main');
+	var main = document.getElementById("main");
 
 	jscolorify.init(main);
 
@@ -61,21 +61,25 @@
 
 	if (window.history.pushState) {
 	  app.ports.updateQs.subscribe(function(state) {
-	    window.history.pushState({}, "", '?' + qs.stringify(state));
+	    window.history.pushState({}, "", "?" + qs.stringify(state));
 	  });
 
-	  window.addEventListener('popstate', function(e) {
-	    var state = qs.parse();
+	  window.addEventListener(
+	    "popstate",
+	    function(e) {
+	      var state = qs.parse();
 
-	    app.ports.qsUpdated.send(state);
-	  }, false);
+	      app.ports.qsUpdated.send(state);
+	    },
+	    false
+	  );
 	}
 
-	if ('scrollRestoration' in window.history) {
+	if ("scrollRestoration" in window.history) {
 	  // Having the browser remember the user's scroll state when
 	  // they press the back button is actually probably *not* what
 	  // the user wants in this case, so we'll disable it if possible.
-	  window.history.scrollRestoration = 'manual';
+	  window.history.scrollRestoration = "manual";
 	}
 
 
@@ -9944,28 +9948,56 @@
 
 	var _toolness$accessible_color_matrix$Symbols$badContrastId = 'usa-matrix-bad-contrast-ratio';
 	var _toolness$accessible_color_matrix$Symbols$badContrastHref = A2(_elm_lang$core$Basics_ops['++'], '#', _toolness$accessible_color_matrix$Symbols$badContrastId);
-	var _toolness$accessible_color_matrix$Symbols$badContrastSvg = function (className) {
-		var attrs = _elm_lang$core$Native_Utils.eq(className, '') ? {ctor: '[]'} : {
-			ctor: '::',
-			_0: _elm_lang$svg$Svg_Attributes$class(className),
-			_1: {ctor: '[]'}
-		};
-		return A2(
-			_elm_lang$svg$Svg$svg,
-			attrs,
-			{
+	var _toolness$accessible_color_matrix$Symbols$badContrastSvg = F2(
+		function (className, text) {
+			var attrs = _elm_lang$core$Native_Utils.eq(className, '') ? {ctor: '[]'} : {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$svg$Svg$use,
-					{
-						ctor: '::',
-						_0: _elm_lang$svg$Svg_Attributes$xlinkHref(_toolness$accessible_color_matrix$Symbols$badContrastHref),
-						_1: {ctor: '[]'}
-					},
-					{ctor: '[]'}),
+				_0: _elm_lang$svg$Svg_Attributes$class(className),
 				_1: {ctor: '[]'}
-			});
-	};
+			};
+			return A2(
+				_elm_lang$svg$Svg$svg,
+				attrs,
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$svg$Svg$use,
+						{
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$xlinkHref(_toolness$accessible_color_matrix$Symbols$badContrastHref),
+							_1: {ctor: '[]'}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$svg$Svg$text_,
+							{
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$x('15'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$y('40'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$textAnchor('left'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$fill('currentColor'),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$svg$Svg$text(text),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				});
+		});
 	var _toolness$accessible_color_matrix$Symbols$symbols = A2(
 		_elm_lang$svg$Svg$svg,
 		{
@@ -9998,7 +10030,7 @@
 								_0: _elm_lang$svg$Svg_Attributes$height('100'),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$svg$Svg_Attributes$fill('#f0f0f0'),
+									_0: _elm_lang$svg$Svg_Attributes$fill('rgba(240,240,240,.5)'),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -10213,45 +10245,123 @@
 									_toolness$accessible_color_matrix$ContrastRatio$humanFriendlyContrastRatio(ratio),
 									'.'))))));
 		});
-	var _toolness$accessible_color_matrix$Matrix$a11yRatio = 4.5;
+	var _toolness$accessible_color_matrix$Matrix$largeContrastLegendText = 'These color combindations can only be used on large text blocks.\n  Per WCAG2.1 Large Text is \'18pt (24px) or 14pt (19px) bold font size.\'\n  ';
+	var _toolness$accessible_color_matrix$Matrix$lowRatioThreshold = 3;
 	var _toolness$accessible_color_matrix$Matrix$badContrastLegendText = A2(
 		_elm_lang$core$Basics_ops['++'],
-		'Please don\'t use these color combinations; they do not meet a color contrast ratio of ',
+		'Do not use these color combinations; they do not meet the minimum color contrast ratio of ',
 		A2(
 			_elm_lang$core$Basics_ops['++'],
-			_elm_lang$core$Basics$toString(_toolness$accessible_color_matrix$Matrix$a11yRatio),
+			_elm_lang$core$Basics$toString(_toolness$accessible_color_matrix$Matrix$lowRatioThreshold),
 			':1, so they do not conform with the standards of\n  WCAG 2 for body text. This means that some people would have\n  difficulty reading the text. Employing accessibility best practices\n  improves the user experience for all users.'));
 	var _toolness$accessible_color_matrix$Matrix$legend = A2(
 		_elm_lang$html$Html$div,
+		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('usa-matrix-legend'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _toolness$accessible_color_matrix$Symbols$badContrastSvg(''),
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('usa-matrix-legend'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('usa-matrix-square'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(_toolness$accessible_color_matrix$Symbols$badContrastSvg, '', ''),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('usa-sr-invisible'),
+								_1: {
+									ctor: '::',
+									_0: _toolness$accessible_color_matrix$Accessibility$ariaHidden(true),
+									_1: {ctor: '[]'}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(_toolness$accessible_color_matrix$Matrix$badContrastLegendText),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$p,
+					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('usa-sr-invisible'),
-						_1: {
-							ctor: '::',
-							_0: _toolness$accessible_color_matrix$Accessibility$ariaHidden(true),
-							_1: {ctor: '[]'}
-						}
+						_0: _elm_lang$html$Html_Attributes$class('usa-matrix-legend'),
+						_1: {ctor: '[]'}
 					},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text(_toolness$accessible_color_matrix$Matrix$badContrastLegendText),
-						_1: {ctor: '[]'}
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('usa-matrix-square'),
+								_1: {
+									ctor: '::',
+									_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-textSize', 'Large+'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$style(
+											{
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'box-shadow', _1: 'inset 0 0 0 1px #aeb0b5'},
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('##:##'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('usa-sr-invisible'),
+									_1: {
+										ctor: '::',
+										_0: _toolness$accessible_color_matrix$Accessibility$ariaHidden(true),
+										_1: {ctor: '[]'}
+									}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(_toolness$accessible_color_matrix$Matrix$largeContrastLegendText),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
 					}),
 				_1: {ctor: '[]'}
 			}
 		});
+	var _toolness$accessible_color_matrix$Matrix$highRatioThreshold = 4.5;
 	var _toolness$accessible_color_matrix$Matrix$matrixTableRow = function (palette) {
 		var rowComboCell = F2(
 			function (background, foreground) {
@@ -10281,7 +10391,27 @@
 										_1: {
 											ctor: '::',
 											_0: _toolness$accessible_color_matrix$Accessibility$role('presentation'),
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html_Attributes$attribute,
+													'data-textSize',
+													(_elm_lang$core$Native_Utils.cmp(ratio, _toolness$accessible_color_matrix$Matrix$highRatioThreshold) < 0) ? 'Large+' : ''),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$style(
+														{
+															ctor: '::',
+															_0: {
+																ctor: '_Tuple2',
+																_0: 'color',
+																_1: _toolness$accessible_color_matrix$Palette$paletteEntryHex(foreground)
+															},
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}
+											}
 										}
 									}
 								}
@@ -10296,25 +10426,13 @@
 										_1: {
 											ctor: '::',
 											_0: _toolness$accessible_color_matrix$Accessibility$ariaHidden(true),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$style(
-													{
-														ctor: '::',
-														_0: {
-															ctor: '_Tuple2',
-															_0: 'color',
-															_1: _toolness$accessible_color_matrix$Palette$paletteEntryHex(foreground)
-														},
-														_1: {ctor: '[]'}
-													}),
-												_1: {ctor: '[]'}
-											}
+											_1: {ctor: '[]'}
 										}
 									},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html$text('Aa'),
+										_0: _elm_lang$html$Html$text(
+											_toolness$accessible_color_matrix$ContrastRatio$humanFriendlyContrastRatio(ratio)),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -10379,7 +10497,12 @@
 																}
 															}
 														}),
-													_1: {ctor: '[]'}
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(
+															(_elm_lang$core$Native_Utils.cmp(ratio, _toolness$accessible_color_matrix$Matrix$highRatioThreshold) < 0) ? ' can only be used on large text' : ''),
+														_1: {ctor: '[]'}
+													}
 												}
 											}
 										}
@@ -10407,12 +10530,24 @@
 									_1: {
 										ctor: '::',
 										_0: _elm_lang$html$Html_Attributes$title(desc),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$style(
+												{
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'color', _1: '#ddd'},
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
 									}
 								},
 								{
 									ctor: '::',
-									_0: _toolness$accessible_color_matrix$Symbols$badContrastSvg('usa-matrix-square'),
+									_0: A2(
+										_toolness$accessible_color_matrix$Symbols$badContrastSvg,
+										'usa-matrix-square',
+										_toolness$accessible_color_matrix$ContrastRatio$humanFriendlyContrastRatio(ratio)),
 									_1: {ctor: '[]'}
 								}),
 							_1: {
@@ -10433,7 +10568,7 @@
 							}
 						});
 				}();
-				return (_elm_lang$core$Native_Utils.cmp(ratio, _toolness$accessible_color_matrix$Matrix$a11yRatio) > -1) ? validCell : invalidCell;
+				return (_elm_lang$core$Native_Utils.cmp(ratio, _toolness$accessible_color_matrix$Matrix$lowRatioThreshold) > -1) ? validCell : invalidCell;
 			});
 		var rowHeaderCell = function (entry) {
 			return A2(
