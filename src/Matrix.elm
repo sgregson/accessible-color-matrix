@@ -1,7 +1,7 @@
 module Matrix exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class, scope, style, title)
+import Html.Attributes exposing (class, scope, style, title, attribute)
 import Color exposing (white)
 
 import Symbols exposing (symbols, badContrastSvg)
@@ -13,16 +13,26 @@ import Palette exposing (
   Palette, PaletteEntry, paletteEntryHex, squareBgStyle
   )
 
-a11yRatio : Float
-a11yRatio = 4.5
+highRatioThreshold : Float
+highRatioThreshold = 4.5
+
+lowRatioThreshold : Float
+lowRatioThreshold = 3
 
 badContrastLegendText : String
 badContrastLegendText =
-  "Please don't use these color combinations; they do not meet a color contrast ratio of " ++
-    toString (a11yRatio) ++ """:1, so they do not conform with the standards of
+  "Do not use these color combinations; they do not meet the minimum color contrast ratio of " ++
+    toString (lowRatioThreshold) ++ """:1, so they do not conform with the standards of
   WCAG 2 for body text. This means that some people would have
   difficulty reading the text. Employing accessibility best practices
   improves the user experience for all users."""
+
+largeContrastLegendText : String
+largeContrastLegendText =
+  """These color combindations can only be used on large text blocks.
+  Per WCAG2.1 Large Text is '18pt (24px) or 14pt (19px) bold font size.'
+  """
+
 
 badContrastText : PaletteEntry -> PaletteEntry -> Float -> String
 badContrastText background foreground ratio =
@@ -37,10 +47,21 @@ goodContrastText background foreground ratio =
 
 legend : Html msg
 legend =
-  div [ class "usa-matrix-legend" ]
-    [ badContrastSvg ""
-    , p [ class "usa-sr-invisible", ariaHidden True ]
-        [ Html.text badContrastLegendText ]
+  div [] 
+    [ div [ class "usa-matrix-legend" ]
+      [ div [class "usa-matrix-square"] [badContrastSvg "" ""]
+      , p [ class "usa-sr-invisible", ariaHidden True ]
+          [ Html.text badContrastLegendText ]
+      ]
+    , div [ class "usa-matrix-legend" ]
+      [ div [
+        class "usa-matrix-square"
+        , attribute "data-textSize" "Large+"
+        , style [("box-shadow", "inset 0 0 0 1px #aeb0b5")]
+        ] [text "##:##"]
+      , p [ class "usa-sr-invisible", ariaHidden True ]
+          [ Html.text largeContrastLegendText ]
+      ]
     ]
 
 capFirst : String -> String
@@ -110,11 +131,12 @@ matrixTableRow palette =
             [ div [ class "usa-matrix-square"
                   , style (squareBgStyle background)
                   , title (goodContrastText background foreground ratio)
-                  , role "presentation" ]
+                  , role "presentation"
+                  , attribute "data-textSize" (if ratio < highRatioThreshold then "Large+" else "")
+                  , style [("color", paletteEntryHex foreground)] ]
                 [ strong [ class "usa-sr-invisible"
-                         , ariaHidden True
-                         , style [("color", paletteEntryHex foreground)] ]
-                    [ text "Aa" ]
+                         , ariaHidden True]
+                    [ text (humanFriendlyContrastRatio ratio) ]
                 ]
             , div [ class "usa-matrix-color-combo-description" ]
               [ strong [] [ text (capFirst foreground.name) ]
@@ -126,6 +148,7 @@ matrixTableRow palette =
                 , text (humanFriendlyContrastRatio ratio)
                 , text "."
                 ]
+              , text (if ratio < highRatioThreshold then " can only be used on large text" else "")
               ]
             ]
 
@@ -135,12 +158,14 @@ matrixTableRow palette =
             desc = badContrastText background foreground ratio
           in
             td [ class "usa-matrix-invalid-color-combo" ]
-              [ div [ role "presentation", title desc ]
-                [ badContrastSvg "usa-matrix-square" ]
+              [ div [ role "presentation"
+              , title desc
+              , style [("color",  "#ddd")]  ]
+                [ badContrastSvg "usa-matrix-square" (humanFriendlyContrastRatio ratio) ]
               , div [ class "usa-sr-only" ] [ text desc ]
               ]
       in
-        if ratio >= a11yRatio then validCell else invalidCell
+        if ratio >= lowRatioThreshold then validCell else invalidCell
 
     row : Palette -> PaletteEntry -> Html msg
     row palette background =

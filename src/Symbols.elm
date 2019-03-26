@@ -13,7 +13,7 @@ symbols =
                , SA.viewBox "0 0 100 100" ]
       [ S.rect [ SA.width "100"
                , SA.height "100"
-               , SA.fill "#f0f0f0" ] []
+               , SA.fill "rgba(240,240,240,.5)" ] []
       , S.line [ SA.x1 "0"
                , SA.y1 "100"
                , SA.x2 "100"
@@ -23,9 +23,14 @@ symbols =
       ]
     ]
 
-badContrastSvg : String -> S.Svg msg
-badContrastSvg className =
+badContrastSvg : String -> String -> S.Svg msg
+badContrastSvg className text =
   let
     attrs = if className == "" then [] else [ SA.class className ]
   in
-    S.svg attrs [ S.use [ SA.xlinkHref badContrastHref ] [] ]
+    S.svg attrs 
+      [ S.use [ SA.xlinkHref badContrastHref ] []
+      , S.text_ [SA.x "15"
+                , SA.y "40"
+                , SA.textAnchor "left"
+                , SA.fill "currentColor"] [S.text text] ]
